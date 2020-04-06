@@ -8,7 +8,7 @@
 
 ## 一、分布式系统的三个指标
 
-![](images/cap.jpg)
+![](https://github.com/byron1655/soft-book/blob/master/DistributedSystem/img/cap.jpg?raw=true)
 
 1998年，加州大学的计算机科学家 Eric Brewer 提出，分布式系统有三个指标。
 
@@ -26,7 +26,7 @@ Eric Brewer 说，这三个指标不可能同时做到。这个结论就叫做 C
 
 大多数分布式系统都分布在多个子网络。每个子网络就叫做一个区（partition）。分区容错的意思是，区间通信可能失败。比如，一台服务器放在中国，另一台服务器放在美国，这就是两个区，它们之间可能无法通信。
 
-![](images/cap_partition.png)
+![](https://github.com/byron1655/soft-book/blob/master/DistributedSystem/img/cap_partition.png?raw=true)
 
 上图中，G1 和 G2 是两台跨区的服务器。G1 向 G2 发送一条消息，G2 可能无法收到。系统设计的时候，必须考虑到这种情况。
 
@@ -36,23 +36,23 @@ Eric Brewer 说，这三个指标不可能同时做到。这个结论就叫做 C
 
 Consistency 中文叫做"一致性"。意思是，写操作之后的读操作，必须返回该值。举例来说，某条记录是 v0，用户向 G1 发起一个写操作，将其改为 v1。
 
-![](images/cap_1.png)
+![](https://github.com/byron1655/soft-book/blob/master/DistributedSystem/img/cap_1.png?raw=true)
 
 接下来，用户的读操作就会得到 v1。这就叫一致性。
 
-![](images/cap_2.png)
+![](https://github.com/byron1655/soft-book/blob/master/DistributedSystem/img/cap_2.png?raw=true)
 
 问题是，用户有可能向 G2 发起读操作，由于 G2 的值没有发生变化，因此返回的是 v0。G1 和 G2 读操作的结果不一致，这就不满足一致性了。
 
-![](images/cap_3.png)
+![](https://github.com/byron1655/soft-book/blob/master/DistributedSystem/img/cap_3.png?raw=true)
 
 为了让 G2 也能变为 v1，就要在 G1 写操作的时候，让 G1 向 G2 发送一条消息，要求 G2 也改成 v1。
 
-![](images/cap_4.png)
+![](https://github.com/byron1655/soft-book/blob/master/DistributedSystem/img/cap_4.png?raw=true)
 
 这样的话，用户向 G2 发起读操作，也能得到 v1。
 
-![](images/cap_5.png)
+![](https://github.com/byron1655/soft-book/blob/master/DistributedSystem/img/cap_5.png?raw=true)
 
 ## 四、Availability
 
